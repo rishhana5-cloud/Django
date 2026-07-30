@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>View Table</h1>
+    <h2>WELCOME {{request.user.email}}</h2>
+    <table border="1">
+<tr>
+     <th>cover</th>
+    <th>Name</th>
+    <th>Author</th>
+    <th>Price</th>
+    <th>Description</th>
+   
+</tr>
+
+   {% for i in table %}
+
+ <tr>
+    <td> 
+        {% if i.cover%}
+        <img src="{{i.cover.url}}" width="100px" >
+         {%else %}
+          <p>no image</p>
+          {%endif%}
+
+    </td>
+    <!-- <td>{{i.id}}</td> -->
+    <td> {{i.name}}</td>
+     <td>{{i.author}}</td>
+      <td>{{i.price}}</td>
+       <td>{{i.description}}</td>
+        <td><a href='{% url "upt" i.id%}'>update</a><br>
+            <a href="{% url 'delete' i.id %}">delete</a><br>
+            <a href="{% url 'add'  i.id %}">ADD cart</a><br>
+        </td>
+            
+            
+ </tr>  
+     {% endfor%}
+     <a href='{% url "form"%}'>ADD+</a><br>
+     <a href="{% url 'out' %}">LOGOUT</a><br>
+     <a href="{% url  'v'%}">CART🛒</a>
+    </table>
+</body>
+</html>
