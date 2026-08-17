@@ -17,4 +17,7 @@ urlpatterns = [
     path('logout/',views.logout_view, name='out'),
     path('view/',views.view_cart,name='v'),
     path('add/<int:bookid>',views.Addcart,name='add'),
+    path('buy/<int:bookid>',views.buy_now , name='buy'),
+    path('success/',views.success, name='success'),
+
 ]

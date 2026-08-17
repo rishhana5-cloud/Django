@@ -18,6 +18,9 @@
     <td>{{i.book.name}}</td>
     <td>{{i.book.price}}</td>
     <td>{{i.quantity}}</td>
+    <td>
+        <a href="{% url 'buy' i.id %}">Buy Now </a>
+    </td>
 
 </tr>
    {%endfor%}
