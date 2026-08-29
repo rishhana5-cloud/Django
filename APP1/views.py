@@ -12,7 +12,6 @@ stripe.api_key=settings.STRIPE_SECRET_KEY
 # Create your views here.
 
 def home(request):
-    # return HttpResponse ("<h1>WELCOME TO APP1 HOME</h1>")
     return render(request,'app1/home.html')
 
 def about(request):
