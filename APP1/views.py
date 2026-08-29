@@ -12,18 +12,18 @@ stripe.api_key=settings.STRIPE_SECRET_KEY
 # Create your views here.
 
 def home(request):
-    return render(request,'app1/home.html')
+    return render(request,'APP1/home.html')
 
 def about(request):
-    return render(request,'app1/about.html')
+    return render(request,'APP1/about.html')
 
 def contact(request):
-    return render(request,'app1/contact.html')
+    return render(request,'APP1/contact.html')
 
 @login_required
 def view_table(request):
     a=Book.objects.all()
-    return render(request,'app1/view.html',{"table":a})
+    return render(request,'APP1/view.html',{"table":a})
 
 @login_required
 def createbook(request):
@@ -31,7 +31,7 @@ def createbook(request):
     if a.is_valid():
         a.save()
         return redirect('Table view')
-    return render(request,'app1/createbook.html',{'form':a})
+    return render(request,'APP1/createbook.html',{'form':a})
 
 @login_required
 def update_book(request,id):
@@ -40,7 +40,7 @@ def update_book(request,id):
     if a.is_valid():
         a.save()
         return redirect('Table view')
-    return render(request,'app1/update.html',{'update':a})
+    return render(request,'APP1/update.html',{'update':a})
 
 @login_required
 def delete_book(request,id):
@@ -48,14 +48,14 @@ def delete_book(request,id):
     if request.method=="POST":
      a.delete()
      return redirect('Table view')
-    return render(request,'app1/delete.html',{'dlt':a})
+    return render(request,'APP1/delete.html',{'dlt':a})
 
 def user_creation(request):
     a=Registeration(request.POST or None)
     if request.method=='POST' and a.is_valid():
         a.save()
         return redirect ('Table view')
-    return render(request,'app1/regform.html',{'form':a})
+    return render(request,'APP1/regform.html',{'form':a})
 
 def loginform(request):
     a=LoginForm(request, data=request.POST or None)
@@ -63,7 +63,7 @@ def loginform(request):
          user=a.get_user()
          login(request,user)
          return redirect('Table view')
-    return render(request,'app1/log.html',{'form':a})
+    return render(request,'APP1/log.html',{'form':a})
 
 def logout_view(request):
     logout(request)
@@ -71,7 +71,7 @@ def logout_view(request):
 
 def view_cart(request):
     a=Cart.objects.filter(user=request.user)
-    return render(request,'app1/cart.html',{'cart':a})
+    return render(request,'APP1/cart.html',{'cart':a})
 
 def Addcart(request,bookid):
     a=Book.objects.get(id=bookid)
